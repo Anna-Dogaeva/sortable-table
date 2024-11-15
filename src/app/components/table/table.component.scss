@@ -1,0 +1,127 @@
+:host {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+
+  --accent: #029275;
+  --base: black;
+  --light: white;
+  --dark: rgba(233, 233, 233);
+  --border: rgb(197, 197, 197);
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.table {
+  border-collapse: collapse;
+  border-bottom: 4px solid var(--accent);
+}
+
+.table-heading {
+  text-align: left;
+  justify-content: space-between;
+  background-color: var(--accent);
+  color: var(--light);
+  position: sticky;
+  top: 0;
+}
+
+.table-sort {
+  margin-left: 0.5rem;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+
+  svg {
+    fill: var(--dark);
+    transition: 0.1s ease-in-out;
+  }
+
+  &:hover svg {
+    fill: var(--border);
+  }
+
+  &.sorted-asc {
+    transform: rotate(180deg);
+  }
+
+  &.sorted-desc {
+    transform: rotate(0deg);
+  }
+
+  &.not-sorted {
+    svg {
+      fill: none;
+      stroke: var(--border);
+    }
+  }
+}
+
+.table-heading-container {
+  display: flex;
+  align-items: center;
+}
+
+.table-heading:first-child {
+  border-top-left-radius: 5px;
+}
+
+.table-heading:last-child {
+  border-top-right-radius: 5px;
+}
+
+.table-heading-row {
+  background-color: var(--accent);
+  color: var(--light);
+  border-radius: 5px;
+}
+
+.table-cell {
+  padding: 0.5rem;
+}
+
+.table-row {
+  background-color: var(--light);
+  border-bottom: 1px solid var(--border);
+  transition: 0.1s ease-in-out;
+
+  &:nth-child(even) {
+    background-color: var(--dark);
+  }
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+.table-pagination {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0 0 1rem 0;
+  padding: 0;
+}
+
+.table-pagination-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.table-pagination-current {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--accent);
+  border-radius: 50%;
+  color: var(--light);
+}

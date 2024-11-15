@@ -1,0 +1,47 @@
+@if ((tableData$ | async); as tableData) {
+  <div class="table-container">
+    <ul class="table-pagination">
+      @for (num of [].constructor(tableData.pages?.total); let i = $index; track i) {
+        <li class="table-pagination-item">
+          @if (i + 1 !== tableData.pages?.current) {
+            <a class="table-pagination-link" (click)="changePage(i + 1)">
+              {{ i + 1 }}
+            </a>
+          } @else {
+            <span class="table-pagination-current">
+          {{ i + 1 }}
+        </span>
+          }
+        </li>
+      }
+    </ul>
+    <table class="table">
+      <tr class="table-heading-row">
+        @for (column of tableData.columns; track column['alias']) {
+          <th class="table-heading table-cell">
+            <div class="table-heading-container">
+              {{ column.title }}
+              <button class="table-sort"
+                      (click)="toggleSort(column)"
+                      [ngClass]="column.sort === ESortDirections.asc ? 'sorted-asc' : 'sorted-desc'"
+                      [class.not-sorted]="!column.sort">
+                <svg width="10" height="8" viewBox="0 0 10 8" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 8L0.669872 0.5H9.33013L5 8Z"/>
+                </svg>
+              </button>
+            </div>
+          </th>
+        }
+      </tr>
+      @for (item of tableData.data; track item['id']) {
+        <tr class="table-row">
+          @for (column of tableData.columns; track column['alias']) {
+            <td class="table-cell">
+              {{ item[column.alias] }}
+            </td>
+          }
+        </tr>
+      }
+    </table>
+  </div>
+}
