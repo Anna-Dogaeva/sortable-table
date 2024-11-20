@@ -1,11 +1,9 @@
 import {ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit} from '@angular/core';
 import {TableService} from "./services/table.service";
 import {BehaviorSubject, Observable} from "rxjs";
-import {ITable} from "./interfaces/table.interface";
+import {ISort, ITable, ITableColumn} from "./interfaces/table.interface";
 import {AsyncPipe, KeyValuePipe, NgClass, NgForOf} from "@angular/common";
-import {ITableColumn} from "./interfaces/table-column.interface";
 import {ESortDirections} from "./constants/table.constants";
-import {ISort} from "./interfaces/sort.interface";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 /**
